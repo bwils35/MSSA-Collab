@@ -4,7 +4,7 @@ const Stock = (props) => {
         <>
             <div className="card border border-dark mt-2">
                 <div className="card-body pb-1">
-                    <h4 className="card-header"> BTC-USD </h4>
+                    <h4 className="card-header"> Traded in USD </h4>
                     <h6 className="card-body">Most Recent Trade</h6>
                     <p className="card-text">{stockItem}</p>
                     {/* <button

@@ -8,7 +8,10 @@ import WebSocket from "./Components/WebSocket";
 
 function App() {
     //
-    const [stockList, setStockList] = useState(null);
+    const [stockList, setStockList] = useState(() => {
+        console.log("Loading");
+        return null;
+    });
     const onSetStockList = (stock) => {
         console.log(stock);
         // if (Object.keys(stock.data).length !== 0) {
@@ -28,8 +31,9 @@ function App() {
             <div className="col-md-6">
                 <div className="App">
                     {/* <StockInput stockListHandler={onSetStockList} /> */}
-                    <p>Stonks and Such</p>
+                    <h1>Stocker</h1>
 
+                    {/* WebSocket button Press for the most recent trade */}
                     <WebSocket setStockListHandler={onSetStockList} />
 
                     {/* {stockList.map((stock, index) => (
@@ -40,13 +44,17 @@ function App() {
                             onDeleteStockHandler={onDeleteStock}
                         />
                     ))} */}
-
-                    {stockList?<Stock
-                        stockItem={stockList}
-                        key={0}
-                        keyToManage={0}
-                        onDeleteStockHandler={onDeleteStock}
-                    />:""}
+                    {/* Displays the crytocoin price in a card view */}
+                    {stockList ? (
+                        <Stock
+                            stockItem={stockList}
+                            key={0}
+                            keyToManage={0}
+                            onDeleteStockHandler={onDeleteStock}
+                        />
+                    ) : (
+                        ""
+                    )}
                 </div>
             </div>
             <div className="col-md-3" />
